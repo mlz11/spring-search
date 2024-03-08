@@ -3,7 +3,7 @@ name: SpringSearch Release
 on:
   push:
     tags:
-      - 'spring-search-**'
+      - '*'
 
 jobs:
   build:
