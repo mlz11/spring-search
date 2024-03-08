@@ -24,3 +24,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CUSTOM_TAG: ${{ github.event.pull_request.title }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
