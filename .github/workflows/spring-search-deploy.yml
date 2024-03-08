@@ -7,6 +7,9 @@ on:
     branches:
       - master
 
+env:
+  TAG_NAME: ${{ github.event.pull_request.title }}
+
 jobs:
   build:
     if: contains(github.head_ref, 'bump/v') && github.event.pull_request.merged == true
@@ -23,9 +26,10 @@ jobs:
         uses: anothrNick/github-tag-action@1.64.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_TAG: ${{ github.event.pull_request.title }}
+          CUSTOM_TAG: ${{ env.TAG_NAME }}
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.event.pull_request.title }}
+          tag_name: ${{ env.TAG_NAME }}
+          generate_release_notes: true
