@@ -5,11 +5,11 @@ on:
     types:
       - closed
     branches:
-      - 'bump/v**'
+      - master
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true
+    if: contains(github.head_ref, 'bump/v') && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
