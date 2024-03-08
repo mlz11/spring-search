@@ -14,7 +14,6 @@ jobs:
   release-maven-central:
     if: contains(github.head_ref, 'bump/v') && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    needs: build-and-test
     permissions:
       contents: write
     steps:
