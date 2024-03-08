@@ -6,8 +6,6 @@ on:
       - closed
     branches:
       - 'bump/v**'
-    paths:
-      - 'pom.xml'
 
 jobs:
   build:
